@@ -10,7 +10,7 @@ const { initApp } = require('./src/app');
 const terminate = require('./utils/terminate');
 
 const app = express();
-const port = 5555;
+const port = 80;
 
 app.use(cors());
 app.use(express.urlencoded({extended: true}))
