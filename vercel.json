@@ -1,11 +1,13 @@
 {
    "version": 2,
    "name": "chadgame-api",
-   "public": true,
+   "routes": [
+      { "src": "/(.*)", "dest": "/index.js" }
+   ],
    "env": {
       "PUSHER_APP_ID": "1492128",
       "PUSHER_KEY": "db47d8e6245d027f427a",
       "PUSHER_SECRET": "0a9e75ac151a4ec04ef9",
       "PUSHER_CLUSTER": "mt1"
-    }
+   }
 }
