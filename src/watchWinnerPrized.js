@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { web3, lotteryContract } = require('../utils/contracts');
-const push = require('../utils/pusher');
+const push = require('../utils/pusherHelper');
 
 const watchWinnerPrized = () => {
   try {
