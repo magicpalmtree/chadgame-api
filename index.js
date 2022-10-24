@@ -6,7 +6,7 @@ const request = require("./utils/request");
 const lotteryTimeLeft = require('./controllers/lotteryTimeLeft');
 const lotteryPrize = require('./controllers/lotteryPrize');
 const prevWinners = require('./controllers/prevWinners');
-const { initApp } = require('./src/app');
+// const { initApp } = require('./src/app');
 const terminate = require('./utils/terminate');
 
 const app = express();
