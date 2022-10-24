@@ -28,7 +28,7 @@ app.listen(port, () => {
   console.log(`Node app listening on port ${port}`);
 });
 
-initApp();
+// initApp();
 
 
 const exitHandler = terminate(app, {
