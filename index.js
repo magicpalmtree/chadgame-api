@@ -16,6 +16,10 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 
+app.get('/', (req, res)=> {
+  res.send("Api Running")
+});
+
 app.get('/time-left', (req, res) => request(lotteryTimeLeft, req, res));
 app.get('/lottery-prize', (req, res) => request(lotteryPrize, req, res));
 app.get('/prev-winners', (req, res) => request(prevWinners, req, res));
