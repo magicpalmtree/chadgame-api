@@ -649,25 +649,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "getLotteryEntry",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "getOwner",
     "outputs": [
@@ -675,45 +656,6 @@
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getRandomSum",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getRequestedId",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getWinnerIndex",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -764,6 +706,11 @@
         "internalType": "string",
         "name": "_tokensymbol",
         "type": "string"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_presalePercent",
+        "type": "uint64"
       },
       {
         "internalType": "uint64",
@@ -900,12 +847,12 @@
   },
   {
     "inputs": [],
-    "name": "owner",
+    "name": "presalePercent",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "uint64",
         "name": "",
-        "type": "address"
+        "type": "uint64"
       }
     ],
     "stateMutability": "view",
@@ -913,7 +860,7 @@
   },
   {
     "inputs": [],
-    "name": "payPrize",
+    "name": "provideLiquidity",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -921,6 +868,34 @@
   {
     "inputs": [],
     "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_vrfCoordinator",
+        "type": "address"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_subscriptionId",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_keyHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_callbackGasLimit",
+        "type": "uint32"
+      }
+    ],
+    "name": "setChainlinkParams",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1050,19 +1025,6 @@
       }
     ],
     "name": "setRatios",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint64",
-        "name": "value",
-        "type": "uint64"
-      }
-    ],
-    "name": "setSubscriptionId",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1203,19 +1165,6 @@
     "name": "setValues",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "subscriptionId",
-    "outputs": [
-      {
-        "internalType": "uint64",
-        "name": "",
-        "type": "uint64"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

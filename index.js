@@ -1,34 +1,40 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors');
-const cron = require('node-cron');
-const { PRIZE_TIME } = require('./config');
-const { getLotteryTimeLeft } = require('./utils');
-const { beginDraw, monitorLotteryEvent } = require('./logic');
+
+const request = require("./utils/request");
+const lotteryTimeLeft = require('./controllers/lotteryTimeLeft');
+const lotteryPrize = require('./controllers/lotteryPrize');
+const prevWinners = require('./controllers/prevWinners');
+const { initApp } = require('./src/app');
+const terminate = require('./utils/terminate');
 
 const app = express();
-const port = 80;
+const port = 5555;
 
 app.use(cors());
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
-app.get('/getLotteryTimeLeft', (req, res) => {
-  const data = getLotteryTimeLeft();
-  res.send(data);
-});
+app.get('/time-left', (req, res) => request(lotteryTimeLeft, req, res));
+app.get('/lottery-prize', (req, res) => request(lotteryPrize, req, res));
+app.get('/prev-winners', (req, res) => request(prevWinners, req, res));
 
 app.listen(port, () => {
   console.log(`Node app listening on port ${port}`);
 });
 
-const initApp = () => { 
-  const task = cron.schedule(`0 0 ${PRIZE_TIME} * * * *`, () =>  {
-    console.log('will execute every hour until stopped');
-    beginDraw();
-  });
-  // beginDraw();
-  monitorLotteryEvent();
-}
-
 initApp();
+
+
+const exitHandler = terminate(app, {
+  coredump: false,
+  timeout: 500
+})  
+
+process.on('uncaughtException', exitHandler(1, 'Unexpected Error'))
+process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'))
+process.on('SIGTERM', exitHandler(0, 'SIGTERM'))
+process.on('SIGINT', exitHandler(0, 'SIGINT'))
 
 module.exports = app;
